@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
+        System.out.println("Welcome to Directory Analyzer");
         File folder;
         File[] files;
 
@@ -16,7 +17,7 @@ public class Main {
             // System search for the folder path given and check if the path is valid
             folder = new File(path);
             if (!folder.exists() || !folder.isDirectory()) {  // if the path is not valid, it will pop up message
-                System.out.println("The path you've entered is not exist");
+                System.out.println("The path you've entered does not exist");
                 continue;  // Return to the question
             }
 
@@ -41,8 +42,8 @@ public class Main {
         // calculating the total of issue found in the folder path selected
         int issueCount = 0;
         for (File file : files) {
-            if (file.isFile() && file.getName().endsWith("issue") || file.getName().endsWith("solved")) {  // if the system found the file named "issue" or " solved"
-                issueCount++;                                                                              // issueCount is increasing by 1
+            if (file.isFile() && file.getName().contains("issue")) {  // if the system found the file named "issue"
+                issueCount++;                                         // issueCount is increasing by 1
             }
         }
         System.out.println("Total number of java files: " + javaCount);  // display total java files found
